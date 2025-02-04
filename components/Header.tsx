@@ -55,10 +55,12 @@ const Header = () => {
           >
             <TrolleyIcon className="w-6 h-6" />
             {/* Span item count once global state is implemented */}
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+            <span
+              className={` ${itemCount > 0 ? "absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs" : "hidden"}`}
+            >
               {itemCount}
             </span>
-            <span>My Basket</span>
+            <span className="sm:text-xs">Cart</span>
           </Link>
 
           {/* User area */}
@@ -66,10 +68,10 @@ const Header = () => {
             <SignedIn>
               <Link
                 href="/orders"
-                className="flex-1 relative flex justify-center sm:justify-start sm:flex-none items-cneter space-x-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="flex-1 relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               >
                 <PackageIcon className="w-6 h-6 " />
-                <span>My Orders</span>
+                <span className="sm:text-xs">Orders</span>
               </Link>
             </SignedIn>
             {user ? (
