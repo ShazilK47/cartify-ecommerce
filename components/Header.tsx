@@ -7,6 +7,12 @@ import { PackageIcon, TrolleyIcon } from "@sanity/icons";
 import { SignedIn } from "@clerk/clerk-react";
 import { useBasketStore } from "@/store/store";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+
+import { Search, Home, Info, Mail, ChevronUp } from "lucide-react";
+
+import Image from "next/image";
 
 // const Header = () => {
 //   const { user } = useUser(); //check wether user is available or not
@@ -326,6 +332,7 @@ const Header = () => {
   const { user } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -360,25 +367,39 @@ const Header = () => {
           Shop Now
         </Link>
       </div>
-      <div className="navbar flex justify-between items-center px-6 py-4 border-b-2 bg-white dark:bg-gray-900">
+      <div className="navbar flex justify-between items-center px-8 py-4 pt-5 border-b-2 bg-white dark:bg-gray-900">
         <Link
           href="/"
-          className="text-2xl font-bold text-black dark:text-white hover:opacity-75"
+          className="text-2xl font-bold text-black dark:text-white hover:opacity-75 flex gap-1 md:pl-6 "
         >
-          Cartify
+          <Image src="/shopping-bag.png" alt="logo" height={25} width={25} />
+          <span>Cartify</span>
         </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-6">
-          {["Home", "About", "Contact"].map((item) => (
-            <Link
-              key={item}
-              href={`${item.toLowerCase() == "home" ? "/" : `${item.toLowerCase()}`}`}
-              className="text-gray-700 dark:text-gray-300 hover:text-red-500 transition hover:border-b-red-500"
-            >
-              {item}
-            </Link>
-          ))}
+          {["Home", "About", "Contact"].map((item) => {
+            const href =
+              item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`;
+            const isActive = pathname === href;
+
+            return (
+              <Link
+                key={item}
+                href={href}
+                className={`relative text-md font-medium transition-colors duration-300 
+              ${isActive ? "text-red-500" : "text-gray-700 dark:text-gray-300"} 
+              hover:text-red-500`}
+              >
+                {item}
+                <span
+                  className={`absolute left-0 bottom-0 w-full h-[2px] bg-red-500 transition-all duration-300 
+                ${isActive ? "scale-x-100" : "scale-x-0"} 
+                hover:scale-x-100`}
+                />
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Search Box */}
@@ -397,9 +418,9 @@ const Header = () => {
             href="/basket"
             className="relative flex items-center p-2  text-black rounded-full"
           >
-            <TrolleyIcon className="w-6 h-6" />
+            <TrolleyIcon className="w-8 h-8" />
             {itemCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+              <span className="absolute -top-0 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                 {itemCount}
               </span>
             )}
@@ -408,9 +429,14 @@ const Header = () => {
             <SignedIn>
               <Link
                 href="/orders"
-                className="hidden md:block p-2 text-black rounded-full"
+                className="relative group hidden md:block p-2 text-black rounded-full transition hover:bg-gray-200 dark:hover:bg-gray-700"
               >
-                <PackageIcon className="w-6 h-6" />
+                <PackageIcon className="w-7 h-7" />
+
+                {/* Tooltip */}
+                <span className="absolute left-1/2 -translate-x-1/2 bottom-12 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 bg-black text-white text-xs px-3 py-1 rounded-md">
+                  Orders
+                </span>
               </Link>
             </SignedIn>
             {user ? (
@@ -434,32 +460,53 @@ const Header = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-gray-700 dark:text-white text-2xl z-50"
           >
-            {!isOpen ? "☰" : "X"}
+            {!isOpen ? "☰" : <ChevronUp size={28} />}
           </button>
         </div>
       </div>
       {/* Mobile Dropdown */}{" "}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg absolute w-full left-0 top-[80px] flex flex-col items-center p-5 space-y-4">
-          {["Home", "About", "Contact"].map((item) => (
+        <motion.div
+          initial={{ scaleY: 0, opacity: 0 }}
+          animate={{ scaleY: 1, opacity: 1 }}
+          exit={{ scaleY: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="absolute w-full left-0 top-[80px] bg-white dark:bg-gray-900 shadow-xl rounded-b-lg flex flex-col items-center py-6 space-y-5 origin-top"
+        >
+          {/* Links */}
+          {[
+            { name: "Home", icon: <Home size={22} />, href: "/" },
+            { name: "About", icon: <Info size={22} />, href: "/about" },
+            { name: "Contact", icon: <Mail size={22} />, href: "/contact" },
+          ].map((item) => (
             <Link
-              key={item}
-              href={`${item.toLowerCase() == "home" ? "/" : `${item.toLowerCase()}`}`}
-              className="text-gray-700 dark:text-white text-lg hover:text-red-500 transition"
+              key={item.name}
+              href={item.href}
+              className="flex items-center gap-2 text-gray-800 dark:text-white text-lg font-medium hover:text-red-500 transition-all duration-200"
               onClick={() => setIsOpen(false)}
             >
-              {item}
+              {item.icon} {item.name}
             </Link>
           ))}
-          <Form action="/search" className="w-full">
-            <input
-              type="text"
-              name="query"
-              placeholder="Search..."
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
-          </Form>
-        </div>
+
+          {/* Search Bar */}
+          <form action="/search" className="w-4/5">
+            <div className="relative">
+              <input
+                type="text"
+                name="query"
+                placeholder="Search..."
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:text-white placeholder-gray-400 transition-all duration-200"
+              />
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-red-500 transition"
+              >
+                <Search size={20} />
+              </button>
+            </div>
+          </form>
+        </motion.div>
       )}
     </header>
   );
