@@ -70,3 +70,16 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .top_header {
+    @apply w-full h-[48px] bg-black text-[#FAFAFA] flex justify-center items-center text-[14px];
+  }
+
+  .search_box {
+    @apply w-60 ml-auto  flex items-center text-xs border-none bg-[#F5F5F5] rounded-md p-2;
+    input {
+      @apply w-full bg-[#F5F5F5] border-none focus:outline-none  px-4;
+    }
+  }
+}
