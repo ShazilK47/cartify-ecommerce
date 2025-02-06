@@ -1,7 +1,9 @@
-// pages/contact.tsx
 "use client";
+
 import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useUser, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
+import { motion } from "framer-motion";
+import { Mail, Phone, User, Send } from "lucide-react";
 
 interface FormDataType {
   name: string;
@@ -13,7 +15,6 @@ interface FormDataType {
 export default function Contact() {
   const { user } = useUser();
 
-  // Basic form state
   const [formData, setFormData] = useState<FormDataType>({
     name: "",
     email: "",
@@ -22,7 +23,6 @@ export default function Contact() {
   });
   const [status, setStatus] = useState<string>("");
 
-  // Prefill user data when user is loaded
   useEffect(() => {
     if (user) {
       setFormData((prev) => ({
@@ -48,11 +48,7 @@ export default function Contact() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          // Optionally include userId to track which user sent the message
-          userId: user?.id,
-        }),
+        body: JSON.stringify({ ...formData, userId: user?.id }),
       });
 
       if (response.ok) {
@@ -72,7 +68,6 @@ export default function Contact() {
     }
   };
 
-  // If user is not signed in, show a sign-in redirect or custom message
   return (
     <>
       <SignedOut>
@@ -80,93 +75,110 @@ export default function Contact() {
       </SignedOut>
 
       <SignedIn>
-        <div className="mx-auto max-w-screen-xl px-4 py-8">
-          <h1 className="mb-6 text-center text-2xl font-bold md:text-left">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="container mx-auto max-w-3xl px-6 py-12"
+        >
+          <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
             Contact Us
           </h1>
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* Left Panel */}
-            <div className="col-span-1 rounded-md border p-6 shadow-sm">
-              <div className="mb-6">
-                <h2 className="mb-2 text-xl font-semibold">Call To Us</h2>
-                <p className="text-gray-600">
-                  We are available 24/7, 7 days a week.
-                </p>
-                <p className="mt-2 font-medium">Phone: +980-987122222</p>
-              </div>
-              <div>
-                <h2 className="mb-2 text-xl font-semibold">Write To Us</h2>
-                <p className="mb-2 text-gray-600">
-                  Fill out our form and we will contact you within 24 hours.
-                </p>
-                <p className="text-gray-600">
-                  Email:{" "}
-                  <span className="font-medium">customer@excluslive.com</span>
-                </p>
-                <p className="text-gray-600">
-                  Email:{" "}
-                  <span className="font-medium">support@excluslive.com</span>
-                </p>
-              </div>
-            </div>
 
-            {/* Right Panel - Form */}
-            <div className="col-span-2 rounded-md border p-6 shadow-sm">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Name, Email, Phone */}
-                <div className="grid gap-4 md:grid-cols-3">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name *"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-md border p-2"
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Your Email *"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-md border p-2"
-                  />
-                  <input
-                    type="text"
-                    name="phone"
-                    placeholder="Your Phone *"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-md border p-2"
-                  />
-                </div>
-                {/* Message */}
-                <textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={6}
-                  className="w-full rounded-md border p-2"
-                  required
-                />
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="rounded-md bg-red-500 px-6 py-2 text-white hover:bg-red-600"
-                >
-                  Send Message
-                </button>
-              </form>
+          <div className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="rounded-lg bg-white dark:bg-gray-900 shadow-md p-6"
+            >
+              <h2 className="mb-3 text-lg font-semibold flex items-center gap-2 text-gray-800 dark:text-white">
+                <Phone size={22} className="text-red-500" /> Call Us
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                We are available 24/7.
+              </p>
+              <p className="mt-2 font-medium text-gray-900 dark:text-white">
+                +980-987122222
+              </p>
+            </motion.div>
 
-              {/* Status message */}
-              {status && <p className="mt-4 text-sm text-gray-700">{status}</p>}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="rounded-lg bg-white dark:bg-gray-900 shadow-md p-6"
+            >
+              <h2 className="mb-3 text-lg font-semibold flex items-center gap-2 text-gray-800 dark:text-white">
+                <Mail size={22} className="text-red-500" /> Write to Us
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                Fill out our form, and we will contact you.
+              </p>
+              <p className="font-medium text-gray-900 dark:text-white">
+                customer@excluslive.com
+              </p>
+            </motion.div>
           </div>
-        </div>
+
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-6 space-y-4 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md"
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name *"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full rounded-md border p-3 dark:bg-gray-800 dark:text-white"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email *"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full rounded-md border p-3 dark:bg-gray-800 dark:text-white"
+              />
+            </div>
+            <input
+              type="text"
+              name="phone"
+              placeholder="Your Phone *"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="w-full rounded-md border p-3 dark:bg-gray-800 dark:text-white"
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={5}
+              className="w-full rounded-md border p-3 dark:bg-gray-800 dark:text-white"
+              required
+            />
+            <button
+              type="submit"
+              className="w-full bg-red-500 py-3 text-white font-semibold rounded-md hover:bg-red-600 transition"
+            >
+              Send Message
+            </button>
+            {status && (
+              <p className="mt-2 text-center text-sm text-gray-700 dark:text-white">
+                {status}
+              </p>
+            )}
+          </motion.form>
+        </motion.div>
       </SignedIn>
     </>
   );

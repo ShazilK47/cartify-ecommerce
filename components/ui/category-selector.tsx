@@ -40,7 +40,7 @@ const CategorySelectorComponent = ({ categories }: CategorySelectorProps) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full max-w-full relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 hover:text-white text-white font-bold py-2 px-4 rounded"
+          className="w-full max-w-full relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-[#DB4444] hover:bg-red-700 hover:text-white text-white font-bold py-2 px-4 rounded"
         >
           {value
             ? categories?.find((category) => category._id === value)?.title

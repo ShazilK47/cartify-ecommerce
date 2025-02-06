@@ -1,4 +1,5 @@
 import BlackFridayBanner from "@/components/BlackFridayBanner";
+import Category from "@/components/Category";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import FeaturesSection from "@/components/FeaturesSection";
 import HeroSection from "@/components/HeroSection";
@@ -30,7 +31,9 @@ export default async function Home() {
         <ProductView products={products} categories={categories} />
       </div>
 
+      <Category />
       <FeaturedProducts />
+
       <FeaturesSection />
     </div>
   );

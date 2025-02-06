@@ -19,10 +19,10 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-bold">Support</h3>
           <p className="text-sm text-gray-400 mt-2">
-            111 Bijoy Sarani, Dhaka, DH 1515, Pakistan.
+            Saddar, karachi, Pakistan.
           </p>
-          <p className="text-sm text-gray-400 mt-2">exclusive@gmail.com</p>
-          <p className="text-sm text-gray-400 mt-2">+88015-88888-9999</p>
+          <p className="text-sm text-gray-400 mt-2">shazil.akn@gmail.com</p>
+          <p className="text-sm text-gray-400 mt-2">+3152248647</p>
         </div>
 
         <div>
@@ -39,18 +39,11 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="text-sm text-gray-400 hover:text-white">
+              <a
+                href="/basket"
+                className="text-sm text-gray-400 hover:text-white"
+              >
                 Cart
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-sm text-gray-400 hover:text-white">
-                Wishlist
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-sm text-gray-400 hover:text-white">
-                Shop
               </a>
             </li>
           </ul>
@@ -75,7 +68,10 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="text-sm text-gray-400 hover:text-white">
+              <a
+                href="/contact"
+                className="text-sm text-gray-400 hover:text-white"
+              >
                 Contact
               </a>
             </li>
@@ -84,7 +80,7 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-gray-600 mt-10 pt-4 text-center text-gray-400 text-sm">
-        &copy; Copyright Rimel 2022. All rights reserved.
+        &copy; Copyright 2025. All rights reserved.
       </div>
     </footer>
   );

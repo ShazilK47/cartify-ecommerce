@@ -67,9 +67,11 @@ const ProductPage = async ({
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-6 relative group">
             <AddToBasketButton product={product} disabled={isOutOfStock} />
-            {/* <Button>Add to Basket</Button> */}
+            <span className="absolute left-1/2 -translate-x-1/2 bottom-12 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 bg-black text-white text-xs px-3 py-1 rounded-md">
+              Add to Cart
+            </span>
           </div>
         </div>
       </div>
