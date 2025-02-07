@@ -36,16 +36,16 @@ const ProductPage = async ({
 
   return (
     <div className="container mx-auto px-8 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2   gap-8 px-4">
         <div
-          className={`relative aspect-square overflow-hidden rounded-lg shadow-lg ${isOutOfStock ? "opacity-50" : ""}`}
+          className={`relative md:max-h-[26rem] aspect-square overflow-hidden rounded-lg shadow-lg ${isOutOfStock ? "opacity-50" : ""}`}
         >
           {product.image && (
             <Image
               src={imageUrl(product.image).url()}
               alt={product.name ?? "Product image"}
               fill
-              className="object-contain transition-transform duration-300 hover:scale-105"
+              className="object-contain  transition-transform duration-300 hover:scale-105"
             />
           )}
           {isOutOfStock && (

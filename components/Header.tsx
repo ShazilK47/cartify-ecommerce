@@ -449,7 +449,7 @@ const Header = () => {
             {user?.passkeys.length === 0 && (
               <button
                 onClick={createClerkPasskey}
-                className="bg-white hover:bg-blue-700 hover:text-white animate-pulse text-blue-500 font-bold py-2 px-4 rounded border border-blue-300"
+                className="hidden bg-white hover:bg-blue-700 hover:text-white animate-pulse text-blue-500 font-bold py-2 px-4 rounded border border-blue-300"
               >
                 Create Passkey
               </button>

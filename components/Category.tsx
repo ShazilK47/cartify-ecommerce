@@ -31,7 +31,7 @@ const Category = () => {
             key={index}
             className="flex flex-col items-center justify-center w-32 h-32 border border-gray-300 rounded-lg shadow-sm transition-all duration-300 hover:shadow-lg hover:border-[#DB4444] hover:bg-[#DB4444] cursor-pointer hover:text-white"
           >
-            <Link href={`/category/${category.name}`}>
+            <Link href={`/categories/${category.name}`}>
               <div className="text-3xl">{category.icon}</div>{" "}
             </Link>
 

@@ -13,17 +13,37 @@ export default function About() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Our Story
           </h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Launched in 2015, Exclusive is South Asia's premier online shopping
-            marketplace with an active presence in Bangladesh. Supported by a
-            wide range of tailored marketing, data, and service solutions,
-            Exclusive has 10,500 sellers and 300 brands and serves 3 million
-            customers across the region.
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            Founded in <span className="font-semibold">2025</span>,
+            <span className="text-red-500 font-semibold">Cartify</span> is a
+            next-generation e-commerce platform designed to redefine online
+            shopping. With a focus on{" "}
+            <span className="font-semibold">
+              speed, convenience, and a seamless user experience{" "}
+            </span>
+            , Cartify is built to serve modern consumers who demand efficiency
+            and quality in every purchase.
           </p>
-          <p className="text-gray-600 leading-relaxed">
-            Exclusive has more than 1 million products to offer, growing at a
-            very fast rate. Exclusive offers a diverse assortment in categories
-            ranging from consumer goods to fashion and technology.
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            Starting with a{" "}
+            <span className="font-semibold">handpicked selection</span> of
+            top-quality products, Cartify is rapidly expanding to offer a wide
+            range of{" "}
+            <span className="font-semibold">
+              electronics, fashion, home essentials, and lifestyle goods
+            </span>
+            . Our commitment to{" "}
+            <span className="text-red-500 font-semibold">
+              customer satisfaction
+            </span>
+            ,
+            <span className="text-red-500 font-semibold">
+              secure transactions
+            </span>
+            , and{" "}
+            <span className="text-red-500 font-semibold">fast deliveries</span>{" "}
+            sets us apart, making online shopping not just easy—but truly
+            enjoyable.
           </p>
         </div>
         <div className="md:w-1/2 flex justify-center">

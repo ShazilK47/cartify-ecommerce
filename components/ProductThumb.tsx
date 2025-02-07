@@ -72,7 +72,7 @@ const ProductThumb = ({ product }: { product: Product }) => {
       <div className="relative w-full aspect-[4/3] overflow-hidden">
         {product.image && (
           <Image
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-contain transition-transform duration-500 group-hover:scale-105"
             src={imageUrl(product.image).url()}
             alt={product.name || "Product image"}
             fill

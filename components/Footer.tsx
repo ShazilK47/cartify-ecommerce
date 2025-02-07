@@ -18,9 +18,7 @@ const Footer = () => {
 
         <div>
           <h3 className="text-lg font-bold">Support</h3>
-          <p className="text-sm text-gray-400 mt-2">
-            Saddar, karachi, Pakistan.
-          </p>
+          <p className="text-sm text-gray-400 mt-2">karachi, Pakistan.</p>
           <p className="text-sm text-gray-400 mt-2">shazil.akn@gmail.com</p>
           <p className="text-sm text-gray-400 mt-2">+3152248647</p>
         </div>

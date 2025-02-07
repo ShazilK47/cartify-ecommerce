@@ -1,10 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface Product {
   id: number;
   title: string;
   description: string;
   image: string;
+  category: string;
 }
 
 const featuredProducts: Product[] = [
@@ -13,24 +15,28 @@ const featuredProducts: Product[] = [
     title: "PlayStation 5",
     description: "Black and White version of the PS5 coming out on sale.",
     image: "/images/ps5.png",
+    category: "games",
   },
   {
     id: 2,
     title: "Women's Collections",
     description: "Featured women collections that give you another vibe.",
     image: "/images/women.png",
+    category: "women-clothes",
   },
   {
     id: 3,
     title: "Speakers",
     description: "Amazon wireless speakers.",
     image: "/images/speakers.png",
+    category: "electroncis",
   },
   {
     id: 4,
     title: "Perfume",
     description: "GUCCI INTENSE OUD EDP",
     image: "/images/perfume.png",
+    category: "beauty",
   },
 ];
 
@@ -62,7 +68,7 @@ const FeaturedProducts: React.FC = () => {
               <h3 className="text-lg font-semibold">{product.title}</h3>
               <p className="text-sm">{product.description}</p>
               <button className="mt-2 text-sm font-medium underline">
-                Shop Now
+                <Link href={`/categories/${product.category}`}>Shop Now</Link>
               </button>
             </div>
           </div>
