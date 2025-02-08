@@ -360,10 +360,8 @@ const Header = () => {
       className={`fixed w-full z-50 transition-all duration-300 ${scrolling ? "bg-white shadow-lg dark:bg-gray-900" : "bg-transparent"}`}
     >
       <div className="hidden sm:flex justify-between items-center bg-black text-white px-6 py-2 text-sm">
-        <p>
-          Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-        </p>
-        <Link href="/" className="underline font-semibold">
+        <p>Mega Sale on Cartify – Shop & Save Big! - OFF 70%!</p>
+        <Link href="#products" className="underline font-semibold">
           Shop Now
         </Link>
       </div>

@@ -26,7 +26,10 @@ export default async function Home() {
       <HeroSection />
       {/* <BlackFridayBanner /> */}
       {/* render all the products */}
-      <div className="flex flex-col items-center justify-top min-h-screen bg-white p-4">
+      <div
+        className="flex flex-col items-center justify-top min-h-screen bg-white p-4 "
+        id="products"
+      >
         <ProductTitle title="Our Products" subtitle="Explore Our Products" />
         <ProductView products={products} categories={categories} />
       </div>

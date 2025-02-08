@@ -1,3 +1,5 @@
+import { SignInButton } from "@clerk/nextjs";
+
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-10 px-4 md:px-16">
@@ -20,7 +22,7 @@ const Footer = () => {
           <h3 className="text-lg font-bold">Support</h3>
           <p className="text-sm text-gray-400 mt-2">karachi, Pakistan.</p>
           <p className="text-sm text-gray-400 mt-2">shazil.akn@gmail.com</p>
-          <p className="text-sm text-gray-400 mt-2">+3152248647</p>
+          <p className="text-sm text-gray-400 mt-2">+923152248647</p>
         </div>
 
         <div>
@@ -31,10 +33,9 @@ const Footer = () => {
                 My Account
               </a>
             </li>
-            <li>
-              <a href="#" className="text-sm text-gray-400 hover:text-white">
-                Login / Register
-              </a>
+            <li className="text-sm text-gray-400 hover:text-white">
+              <SignInButton mode="modal" />
+              /Register
             </li>
             <li>
               <a
