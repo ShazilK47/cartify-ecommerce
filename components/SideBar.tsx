@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 // import Link from "next/link";
 // import { FaChevronDown } from "react-icons/fa";
 
@@ -72,18 +73,18 @@ const SideBar = () => {
   };
 
   return (
-    <div className="sidebar hidden md:block border-r w-64 bg-white shadow-lg ml-9">
+    <div className="sidebar ml-9 hidden w-64 border-r bg-white shadow-lg md:block">
       <div className="mt-10 pb-8">
-        <ul className="flex flex-col pl-6 pr-6 gap-4">
+        <ul className="flex flex-col gap-4 px-6">
           {/* Women's Fashion */}
           <li className="relative">
             <button
               onClick={() => toggleDropdown("womensFashion")}
-              className="flex justify-between items-center w-full text-left px-4 py-3 text-gray-700 font-medium hover:bg-gray-100 rounded-lg transition-all"
+              className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left font-medium text-gray-700 transition-all hover:bg-gray-100"
             >
               <span className="flex items-center gap-2">
                 <IoShirtOutline className="text-xl text-[#DB4444]" />
-                Women's Fashion
+                Women&apos;s Fashion
               </span>
               <FaChevronDown
                 className={`text-sm transition-transform ${
@@ -127,11 +128,11 @@ const SideBar = () => {
           <li className="relative">
             <button
               onClick={() => toggleDropdown("mensFashion")}
-              className="flex justify-between items-center w-full text-left px-4 py-3 text-gray-700 font-medium hover:bg-gray-100 rounded-lg transition-all"
+              className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left font-medium text-gray-700 transition-all hover:bg-gray-100"
             >
               <span className="flex items-center gap-2">
                 <IoWatchOutline className="text-xl text-[#DB4444]" />
-                Men's Fashion
+                Men&apos; Fashion
               </span>
               <FaChevronDown
                 className={`text-sm transition-transform ${
@@ -172,7 +173,7 @@ const SideBar = () => {
           </li>
 
           {/* Other Categories */}
-          <li className="px-4 py-3 hover:bg-gray-100 rounded-lg transition-all">
+          <li className="rounded-lg px-4 py-3 transition-all hover:bg-gray-100">
             <Link
               href="/categories/electronics"
               className="flex items-center gap-2"
@@ -181,7 +182,7 @@ const SideBar = () => {
               Electronics
             </Link>
           </li>
-          <li className="px-4 py-3 hover:bg-gray-100 rounded-lg transition-all">
+          <li className="rounded-lg px-4 py-3 transition-all hover:bg-gray-100">
             <Link
               href="/categories/home-appliances"
               className="flex items-center gap-2"
@@ -190,7 +191,7 @@ const SideBar = () => {
               Home & Lifestyle
             </Link>
           </li>
-          <li className="px-4 py-3 hover:bg-gray-100 rounded-lg transition-all">
+          <li className="rounded-lg px-4 py-3 transition-all hover:bg-gray-100">
             <Link href="/categories/sports" className="flex items-center gap-2">
               <IoFitnessOutline className="text-xl text-[#DB4444]" />
               Sports & Outdoor

@@ -3,7 +3,7 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useUser, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 import { motion } from "framer-motion";
-import { Mail, Phone, User, Send } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 interface FormDataType {
   name: string;
@@ -34,7 +34,7 @@ export default function Contact() {
   }, [user]);
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -90,9 +90,9 @@ export default function Contact() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="rounded-lg bg-white dark:bg-gray-900 shadow-md p-6"
+              className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-900"
             >
-              <h2 className="mb-3 text-lg font-semibold flex items-center gap-2 text-gray-800 dark:text-white">
+              <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-white">
                 <Phone size={22} className="text-red-500" /> Call Us
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
@@ -107,9 +107,9 @@ export default function Contact() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="rounded-lg bg-white dark:bg-gray-900 shadow-md p-6"
+              className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-900"
             >
-              <h2 className="mb-3 text-lg font-semibold flex items-center gap-2 text-gray-800 dark:text-white">
+              <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gray-800 dark:text-white">
                 <Mail size={22} className="text-red-500" /> Write to Us
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
@@ -126,7 +126,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-6 space-y-4 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md"
+            className="mt-6 space-y-4 rounded-lg bg-white p-6 shadow-md dark:bg-gray-900"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <input
@@ -168,7 +168,7 @@ export default function Contact() {
             />
             <button
               type="submit"
-              className="w-full bg-red-500 py-3 text-white font-semibold rounded-md hover:bg-red-600 transition"
+              className="w-full rounded-md bg-red-500 py-3 font-semibold text-white transition hover:bg-red-600"
             >
               Send Message
             </button>
