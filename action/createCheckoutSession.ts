@@ -36,14 +36,19 @@ export async function createCheckoutSession(
       customerId = customers.data[0].id;
     }
 
+    // const baseUrl =
+    //   process.env.NODE_ENV === "production"
+    //     ? `https://${process.env.VERCEL_URL}`
+    //     : `${process.env.NEXT_PUBLIC_BASE_URL}`;
+
     const baseUrl =
-      process.env.NODE_ENV === "production"
-        ? `https://${process.env.VERCEL_URL}`
-        : `${process.env.NEXT_PUBLIC_BASE_URL}`;
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_BASE_URL // Manually set production domain
+    : "http://localhost:3000"; // Use local URL for development
 
     const successUrl = `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`;
 
-    let cancelUrl = `${baseUrl}/basket`;
+    const cancelUrl = `${baseUrl}/basket`;
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
