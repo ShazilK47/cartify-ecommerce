@@ -19,7 +19,7 @@ Cartify is a modern e-commerce frontend built with **Next.js, Tailwind CSS, Shad
 
 Clone the repository and install dependencies:
 ```bash
- git clone https://github.com/your-username/cartify.git
+ git clone https://github.com/shazilk47/cartify.git
  cd cartify
  npm install
 ```
